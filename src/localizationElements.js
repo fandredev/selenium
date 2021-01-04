@@ -3,11 +3,11 @@ const { Builder, By, until} = require('selenium-webdriver');
 
 
 (async function test() {
-    let driver = await new Builder().forBrowser('chrome').build();
+    const driver = await new Builder().forBrowser('chrome').build();
     try {
-        await driver.get('http://x9.4y2.org/');
+        await driver.get(process.env.NAVIGATE_URL || 'http://x9.4y2.org/');
        const title = await driver.wait(until.titleIs('X9 - Health Check'), 1000);
-       const url = await driver.wait(until.urlIs('http://x9.4y2.org/'))
+       const url = await driver.wait(until.urlIs(process.env.NAVIGATE_URL || 'http://x9.4y2.org/'))
        const isReactContainId = await driver.findElement(By.id('root'))
        const isFooterContainClass = await driver.findElement(By.css('footer')) 
 

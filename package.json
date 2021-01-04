@@ -5,6 +5,8 @@
   "license": "MIT",
   "dependencies": {
     "chromedriver": "^87.0.4",
+    "dotenv": "^8.2.0",
+    "fs": "0.0.1-security",
     "selenium-webdriver": "^4.0.0-alpha.8"
   },
   "scripts": {
@@ -20,7 +22,7 @@
     "lint-staged": "^10.5.3",
     "prettier": "^2.2.1"
   },
-    "author": {
+  "author": {
     "email": "profissionalf.andre@gmail.com",
     "name": "Felipe André",
     "url": "https://github.com/flubyGit"
@@ -33,7 +35,7 @@
     "email": "profissionalf.andre@gmail.com",
     "url": "https://github.com/flubyGit/portfolio/issues"
   },
-    "husky": {
+  "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
     }
