@@ -1,0 +1,12 @@
+{
+  "editor.suggestSelection": "first",
+  "diffEditor.ignoreTrimWhitespace": false,
+  "git.autofetch": true,
+  "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true,
+      "source.fixAll": true
+  },
+  "editor.tabSize": 2,
+
+  "javascript.suggest.autoImports": true,
+}
