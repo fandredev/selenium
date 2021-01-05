@@ -1,9 +1,9 @@
 require('chromedriver')
 require('dotenv').config()
 
-const { writeFileSync } = require('fs')
-const { resolve } = require('path')
 const { Builder, Capabilities } = require('selenium-webdriver');
+const takePicture = require('./utils/snapshot');
+
 
 (async () => {
   const possibilites = new Capabilities()
@@ -24,8 +24,7 @@ const { Builder, Capabilities } = require('selenium-webdriver');
     console.log(error)
   }
   finally {
-    const encoded = await driver.takeScreenshot()
-    await writeFileSync(resolve(__dirname, 'screenshots', 'load.png'), encoded, 'base64')
+    takePicture(driver, 'load')
     await driver.quit()
   }
 })()

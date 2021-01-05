@@ -1,9 +1,8 @@
 require('chromedriver')
 
-const { Builder, By, Capabilities, Key, until } = require('selenium-webdriver');
+const { Builder, By, Capabilities, Key } = require('selenium-webdriver');
+const takePicture = require('./utils/snapshot');
 
-const { writeFileSync } = require('fs');
-const { resolve } = require('path');
 
 (async () => {
   const load = new Capabilities()
@@ -37,8 +36,7 @@ const { resolve } = require('path');
     console.log(error, 'Erros')
   }
   finally {
-    const screenshot = await driver.takeScreenshot()
-    await writeFileSync(resolve(__dirname, 'screenshots','4y2.png'), screenshot, 'base64')
+    takePicture(driver, '4y2')
     await driver.quit()
   }
 })()

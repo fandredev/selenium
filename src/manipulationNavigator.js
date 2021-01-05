@@ -1,9 +1,8 @@
 require('chromedriver');
 require('dotenv').config();
 
-const { writeFileSync } = require('fs')
-const { resolve } = require('path')
 const { Builder, By } = require('selenium-webdriver');
+const takePicture = require('./utils/snapshot');
 
 (async () => {
   const driver = await new Builder().forBrowser('chrome').build()
@@ -23,8 +22,7 @@ const { Builder, By } = require('selenium-webdriver');
     }
   } catch (error) {console.error('Error in google chrome driver')}
   finally {
-   const encoded = driver.takeScreenshot()
-   await writeFileSync(resolve(__dirname, 'screenshots','manipulation.png'), encoded, 'base64')
+   takePicture(driver, 'manipulation')
    await driver.quit()
   }
 })()

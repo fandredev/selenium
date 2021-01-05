@@ -1,11 +1,8 @@
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable no-await-in-loop */
 require('chromedriver')
-
-const { writeFileSync } = require('fs')
-const { resolve } = require('path')
-
 const { Builder, Capabilities, By }  = require('selenium-webdriver');
+const takePicture = require('./utils/snapshot');
 
 (async () => {
   const load = new Capabilities()
@@ -59,8 +56,7 @@ const { Builder, Capabilities, By }  = require('selenium-webdriver');
       console.log(error)
   }
   finally {
-    const snapshot = await driver.takeScreenshot()
-    await writeFileSync(resolve(__dirname, 'screenshots', 'web.png'), snapshot, 'base64')
+    takePicture(driver, 'web')
     await driver.quit()
   }
 })()
