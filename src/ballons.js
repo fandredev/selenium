@@ -3,7 +3,6 @@ require('dotenv').config();
 
 const { Builder} = require('selenium-webdriver');
 
-
 (async () => {
   const driver = await new Builder().forBrowser('chrome').build()
   try {

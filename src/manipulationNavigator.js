@@ -1,6 +1,8 @@
 require('chromedriver');
 require('dotenv').config();
-const fs = require('fs')
+
+const { writeFileSync } = require('fs')
+const { resolve } = require('path')
 const { Builder, By } = require('selenium-webdriver');
 
 (async () => {
@@ -22,7 +24,7 @@ const { Builder, By } = require('selenium-webdriver');
   } catch (error) {console.error('Error in google chrome driver')}
   finally {
    const encoded = driver.takeScreenshot()
-   await fs.writeFileSync('./screenshot.png', encoded, 'base64')
+   await writeFileSync(resolve(__dirname, 'screenshots','manipulation.png'), encoded, 'base64')
    await driver.quit()
   }
 })()
